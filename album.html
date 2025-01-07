@@ -79,10 +79,22 @@
       </nav>
     </header>
     <main>
-      <div id="annuncio"></div>
-      <div id="Buona-Sera"></div>
-      <div id="altro"></div>
-      tutto il main
+      <div class="col-md-6">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="What do you want to listen to?"
+          aria-label="Search"
+          id="search"
+        />
+      </div>
+      <button class="btn btn-outline-success" id="ricerca" type="submit">
+        Search
+      </button>
+
+      <div class="container">
+        <div class="row" id="album"></div>
+      </div>
     </main>
     <footer>player</footer>
     <div id="left-bar"></div>
@@ -94,5 +106,5 @@
     crossorigin="anonymous"
   ></script>
 
-  <script type="module" src="script.js"></script>
+  <script type="module" src="album.js"></script>
 </html>

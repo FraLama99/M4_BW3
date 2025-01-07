@@ -1,4 +1,4 @@
-const URL = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
+const URL = "https://striveschool-api.herokuapp.com/api/deezer/album/";
 
 const searchDeezer = (searchQuery) => {
     fetch(`${URL}${searchQuery}`)
@@ -10,36 +10,46 @@ const searchDeezer = (searchQuery) => {
         })
         .then(data => {
             console.log(data);
-            popolaAltro(data);
+            popolaAlbum(data);
         })
         .catch(error => {
             console.error('Error fetching data:', error);
         });
 };
 
-const popolaAltro = (data) => {
-    let altro = document.getElementById('altro');
-    altro.innerHTML = '';
-
-    if (!data || !data.data) {
-        console.error('Dati non validi');
-        return;
-    }
-
-    data.data.forEach((element) => {
-        altro.innerHTML += `
-        <div class="card bg-body-dark text-bg-dark" style="width: 18rem;">
-            <img src="${element.album.cover}" class="card-img-top" alt="...">
+const popolaAlbum = (data) => {
+    const album = document.getElementById('album');
+    album.innerHTML = `
+        <div class="card">
+            <img src="${data.cover}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">${element.title}</h5>
-                <p class="card-text">${element.artist.name}</p>
-                <a href="${element.link}" class="btn btn-danger">Go somewhere</a>
+                <h5 class="card-title">${data.title}</h5>
+                <p class="card-text">${data.artist.name}</p>
+                <p class="card-text">${data.release_date}</p>
+                <p class="card-text">${data.nb_tracks} tracks</p>
+                <div class="list-tracks">
+                ${data.tracks.data.map((track, index) => `
+                    <div class="track">
+                        <p>${index + 1}. ${track.title} - ${track.duration}s</p>
+                    </div>
+                `).join('')}
+                </div>
             </div>
         </div>
-        `;
-    });
+    `;
+    console.log(data);
 };
-const searchQuery = 'eminem';
-searchDeezer(searchQuery);
-let altro = document.getElementById('altro');
 
+const searchButton = document.getElementById('ricerca');
+if (searchButton) {
+    searchButton.addEventListener('click', () => {
+        const searchInput = document.getElementById('search');
+        if (searchInput && searchInput.value) {
+            searchDeezer(searchInput.value);
+        } else {
+            console.error('Search input not found or empty');
+        }
+    });
+} else {
+    console.error('Search button not found');
+}
