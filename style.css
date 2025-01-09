@@ -13,6 +13,20 @@
         font-size: small;
     }
 
+    .scritta {
+        font-size: smaller;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 1;
+    }
+
+    main {
+        margin-bottom: 130px;
+    }
 }
 
 
@@ -24,8 +38,14 @@
     }
 
     #artist img {
-        width: 50px;
-        height: 50px;
+        width: 30px;
+        height: 30px;
+    }
+    #artist h4 {
+        font-size: small;
     }
 
+    h1 {
+        font-size: 70px;
+    }
 }
