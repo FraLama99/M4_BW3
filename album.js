@@ -20,40 +20,94 @@ const searchDeezer = (searchQuery) => {
 const popolaAlbum = (data) => {
     const album = document.getElementById('album');
     album.innerHTML = `
-        <div class="album-container d-flex flex-column">
-            <div class="d-flex flex-row align-items-center ">
-                <div class="album-cover">
-                    <img src="${data.cover}" alt="${data.title}">
+         <div class="d-flex">
+                  <i
+                    class="bi bi-arrow-left d-flex ms-2 d-lg-none justify-content-start"
+                    width="25"
+                    height="25"
+                  ></i>
+
+                  <div id="cover" class="album-cover d-flex mb-4 m-lg-0 m-auto">
+                    <img
+                      src="${data.cover}"
+                      alt="${data.title}"
+                      class="object-fit-cover"
+                    />
+                  </div>
                 </div>
-                <div class="album-info ps-4">
-                    <h1>${data.title}</h1>
-                        <div class="d-flex flex-row align-items-center">
-                            <img src="${data.artist.picture}" alt="${data.artist.name}" class="rounded-circle" style="width: 50px; height: 50px;">
-                            <h4>${data.artist.name}</h4>
-                            <div class="release-date ps-2">${data.release_date}</div>
-                            <div class="tracks-count ps-2">${data.nb_tracks} tracks</div>
-                        </div>
+
+                <!-- Titolo, artista, album -->
+                <div
+                  class="album-info d-flex flex-column justify-content-lg-end gap-lg-5"
+                >
+                  <div class="d-none d-lg-flex">Album</div>
+                  <h2>${data.title}</h2>
+                  <div
+                    id="artist"
+                    class="d-flex flex-column flex-lg-row gap-2 align-items-lg-center"
+                  >
+                    <div class="d-flex align-items-center gap-3 mt-2">
+                      <img
+                        src="${data.artist.picture}"
+                        alt="${data.artist.name}"
+                        class="rounded-circle img-fluid object-fit-cover"
+                      />
+                      <h4 class="m-0">${data.artist.name}</h4>
+                    </div>
+                    <div class="d-flex gap-1 text-secondary mt-2">
+                      <div class="d-lg-none">Album</div>
+                      <div>•</div>
+                      <div class="tracks-date">${data.release_date}</div>
+                      <div class="d-none d-lg-flex">•</div>
+                      <div class="d-none d-lg-flex tracks-count">
+                        ${data.nb_tracks}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </div>
-                <div class="tracks-list ">                    
+             
+    `;
+    console.log(data);
+    const tracks = document.getElementById('tracks');
+    tracks.innerHTML = `<div class="tracks-list ">                    
                         ${data.tracks.data.map((track, index) => `
-                    <div class=" mt-4 d-flex justify-content-between align-items-center">
-                            <div class="track-item d-flex flex-row gap-3 align-items-center">
-                                <div id="track-number ">${index + 1}</div>
-                                <div class="d-flex flex-column">
-                                    <div id="track-title">${track.title}</div>
-                                    <div id="track-artist" class="text-secondary" >${track.artist.name}</div>
-                                </div>
-                            </div>  
-                            <div id="track-rank">${track.rank}</div>
-                            <div id="track-duration">${durataFormattata(track.duration)}s</div>
-                        </div>
+                    <div
+                  class="track-item d-flex flex-row gap-3 align-items-center justify-content-between">                  
+                  <div id="track-number"
+                    class="d-none d-md-flex col-md-1 justify-content-center">
+                    ${index + 1}
+                  </div>                 
+                  <div id="title-artist" class="col-md-5">
+                    <div id="track-title">${track.title}</div>
+                    <div id="track-artist" class="text-secondary">
+                      ${track.artist.name}
+                    </div>
+                  </div>                 
+                  <div class="d-flex align-items-center d-md-none">
+                    <i
+                      class="bi bi-three-dots-vertical"
+                      width="16"
+                      height="16"
+                    ></i>
+                  </div>                 
+                  <div
+                    id="track-rank"
+                    class="d-none d-md-flex col-md-2 justify-content-end"
+                  >
+                    ${track.rank}
+                  </div>                 
+                  <div
+                    id="track-duration"
+                    class="d-none d-md-flex pe-4 col-md-2 justify-content-end"
+                  >
+                    ${durataFormattata(track.duration)}s
+                  </div>
+                </div>
+              </div>
                     `).join('')}
                 </div>
             
-        </div>
-    `;
-    console.log(data);
+        </div>`;
 };
 function durataFormattata(seconds) {
     const minutes = Math.floor(seconds / 60);
@@ -74,3 +128,4 @@ if (searchButton) {
 } else {
     console.error('Search button not found');
 }
+searchDeezer('75621062'); 
