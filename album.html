@@ -12,8 +12,8 @@
 </head>
 
 
-<body class="text-bg-dark">
-
+<body>
+  <!-- 
   <header>
     <nav class="d-none d-lg-flex navbar navbar-expand-lg bg-body-dark text-bg-dark">
       <div class="container-fluid">
@@ -59,282 +59,411 @@
         </div>
       </div>
     </nav>
-  </header>
+  </header> -->
 
-  <main>
-    <div class="d-none d-lg-flexcol-md-6">
-      <input type="search" class="form-control" placeholder="What do you want to listen to?" aria-label="Search"
-        id="search" />
-      <button class="btn btn-outline-success" id="ricerca" type="submit">
-        Search
-      </button>
+  <div class="container-fluid d-flex">
+    <!-- ------------------------------------------------ SIDEBAR VERTICAL ------------------------------------------------ -->
+    <div class="d-none d-xl-flex col-lg-3 col-xxl-2">
+      <nav
+        class="navbar navbar-expand-lg navbar-white bg-navbar fixed-left justify-content-between col-lg-3 col-xxl-2 px-2"
+        id="sidebar">
+        <div class="nav-container">
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav d-flex flex-column">
+              <ul>
+                <li>
+                  <a class="nav-item nav-link d-flex gap-3 align-item-center" href="index.html"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                      class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                      <path
+                        d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
+                    </svg>
+                    <div>Home</div>
+                  </a>
+                </li>
+                <li>
+                  <a class="nav-item nav-link d-flex gap-3 align-item-center" href="index.html"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search"
+                      viewBox="0 0 16 16">
+                      <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                    <div>Cerca</div>
+                  </a>
+                </li>
+                <li>
+                  <a class="nav-item nav-link d-flex align-item-center gap-3" href="#"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                      class="bi bi-collection" viewBox="0 0 16 16">
+                      <path
+                        d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5z" />
+                    </svg>
+                    <div>La tua libreria</div>
+                  </a>
+                </li>
+              </ul>
+              <ul class="mt-4">
+                <li>
+                  <button class="addBtn">+</button><span>Crea playlist</span>
+                </li>
+                <li>
+                  <button class="addBtn" id="likedBtn"><i class="bi bi-heart-fill text-white"></i></button><span>Brani
+                    che ti piacciono</span>
+                </li>
+                <li>
+                  <button class="addBtn" id="savedBtn"><i class="bi bi-bookmark-fill text-success"></i></button><span>i
+                    tuoi episodi</span>
+                </li>
+              </ul>
+              <hr>
+            </div>
+          </div>
+        </div>
+
+      </nav>
     </div>
+    <!--END SIDEBAR VERTICAL-->
+
+    <!-- ------------------------------------------------ MAIN CONTENT ------------------------------------------------ -->
+    <main class="col-12 col-xl-6 col-xxl-8">
+      <div class="d-none d-xl-flex col-md-6">
+        <input type="search" class="form-control" placeholder="What do you want to listen to?" aria-label="Search"
+          id="search" />
+        <button class="btn btn-outline-success" id="ricerca" type="submit">
+          Search
+        </button>
+      </div>
 
 
-    <div class="container">
-      <div class="row mt-4" id="album">
+      <div class="container">
+        <div class="row mt-4" id="album">
 
-        <!-- album caricato dinamicamente tramite js -->
+          <!-- album caricato dinamicamente tramite js -->
 
-        <div class="album-container d-flex flex-column">
-          <div class="d-flex flex-column flex-md-row gap-md-5">
-            <!-- freccia + immagine -->
-            <div class="d-flex">
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                class="bi bi-arrow-left ms-2 d-md-none" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
-              </svg>
-              <div id="cover" class="album-cover d-flex ms-5 mb-4 m-md-0">
-                <img src="https://th.bing.com/th/id/OIP.tlCFk4zdkl0dB8Lchz-8RgHaEo?rs=1&pid=ImgDetMain"
-                  alt="Gioventù bruciata" class="object-fit-cover">
+          <div class="album-container d-flex flex-column">
+            <div class="d-flex flex-column flex-lg-row gap-md-5">
+              <!-- freccia + immagine -->
+              <div class="d-flex">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                  class="bi bi-arrow-left d-flex ms-2 d-lg-none justify-content-start" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+                </svg>
+                <div id="cover" class="album-cover d-flex mb-4 m-lg-0 m-auto">
+                  <img src="https://th.bing.com/th/id/OIP.tlCFk4zdkl0dB8Lchz-8RgHaEo?rs=1&pid=ImgDetMain"
+                    alt="Gioventù bruciata" class="object-fit-cover">
+                </div>
               </div>
-            </div>
 
-            <!-- Titolo, artista, album -->
-            <div class="album-info d-flex flex-column justify-content-md-end gap-md-5">
-              <div class="d-none d-md-flex">Album</div>
-              <h1>Gioventù brucata</h1>
-              <div id="artist" class="d-flex flex-column flex-lg-row gap-2 align-items-md-center">
-                <div class="d-flex align-items-center gap-3">
-                  <img
-                    src="https://inchiostrosonoroblog.files.wordpress.com/2022/09/pinguini-tattici-nucleari-ricordi.jpg"
-                    alt="${data.artist.name}" class="rounded-circle img-fluid object-fit-cover">
-                  <h4 class="m-0">Pinguini Tattici Nucleari</h4>
-                </div>
-                <div class="d-flex gap-1 text-secondary">
-                  <div class="d-md-none">Album</div>
-                  <div>•</div>
-                  <div class="tracks-date">2017</div>
-                  <div class="d-none d-md-flex">•</div>
-                  <div class="tracks-count">12 brani</div>
-                </div>
-
-                <!-- simboli + play mobile -->
-                <div class="d-flex justify-content-between align-items-center d-md-none">
-                  <div id="simboli" class="d-flex gap-3 align-items-center">
-                    <!-- heart -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                      class="bi bi-heart" viewBox="0 0 16 16">
-                      <path
-                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                    </svg>
-                    <!-- download -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                      class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd"
-                        d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
-                    </svg>
-                    <!-- other info -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                      class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                      <path
-                        d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
-                    </svg>
+              <!-- Titolo, artista, album -->
+              <div class="album-info d-flex flex-column justify-content-lg-end gap-lg-5">
+                <div class="d-none d-lg-flex">Album</div>
+                <h1>Gioventù brucata</h1>
+                <div id="artist" class="d-flex flex-column flex-lg-row gap-2 align-items-lg-center">
+                  <div class="d-flex align-items-center gap-3 mt-2">
+                    <img
+                      src="https://inchiostrosonoroblog.files.wordpress.com/2022/09/pinguini-tattici-nucleari-ricordi.jpg"
+                      alt="${data.artist.name}" class="rounded-circle img-fluid object-fit-cover">
+                    <h4 class="m-0">Pinguini Tattici Nucleari</h4>
+                  </div>
+                  <div class="d-flex gap-1 text-secondary mt-2">
+                    <div class="d-lg-none">Album</div>
+                    <div>•</div>
+                    <div class="tracks-date">2017</div>
+                    <div class="d-none d-lg-flex">•</div>
+                    <div class="d-none d-lg-flex tracks-count">12 brani</div>
                   </div>
 
-                  <div id="play" class="d-flex d-md-none gap-3">
-                    <!-- shuffle -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                      class="bi bi-shuffle align-self-center" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd"
-                        d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.6 9.6 0 0 0 7.556 8a9.6 9.6 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.6 10.6 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.6 9.6 0 0 0 6.444 8a9.6 9.6 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5" />
-                      <path
-                        d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192" />
-                    </svg>
-                    <!-- play -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="green"
-                      class="bi bi-play-circle-fill bg-white rounded-circle" viewBox="0 0 16 16">
-                      <path
-                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
-                    </svg>
+                  <!-- simboli + play mobile -->
+                  <div class="d-flex justify-content-between align-items-center d-lg-none my-4">
+                    <div id="simboli" class="d-flex gap-3 align-items-center">
+                      <!-- heart -->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-heart" viewBox="0 0 16 16">
+                        <path
+                          d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                      </svg>
+                      <!-- download -->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                          d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
+                      </svg>
+                      <!-- other info -->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                        <path
+                          d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                      </svg>
+                    </div>
+
+                    <div id="play" class="d-flex d-lg-none gap-3">
+                      <!-- shuffle -->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-shuffle align-self-center" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                          d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.6 9.6 0 0 0 7.556 8a9.6 9.6 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.6 10.6 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.6 9.6 0 0 0 6.444 8a9.6 9.6 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5" />
+                        <path
+                          d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192" />
+                      </svg>
+                      <!-- play -->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="green"
+                        class="bi bi-play-circle-fill bg-white rounded-circle" viewBox="0 0 16 16">
+                        <path
+                          d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <!-- simboli + play da medium -->
+            <div class="d-flex justify-content-between align-items-center my-4 d-none d-lg-flex">
+              <div id="simboli" class="d-flex gap-3 align-items-center">
+                <!-- play -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="green"
+                  class="bi bi-play-circle-fill bg-white rounded-circle me-3" viewBox="0 0 16 16">
+                  <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
+                </svg>
+                <!-- heart -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                </svg>
+                <!-- download -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
+                </svg>
+                <!-- other info -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-three-dots" viewBox="0 0 16 16">
+                  <path
+                    d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
+                </svg>
+              </div>
+            </div>
+
+
+            <!-- ------------------------------------------------ TRACKS-LIST ------------------------------------------------ -->
+            <div id="tracks-list" class="d-flex flex-column mt-3 gap-4">
+
+              <!-- intestazione tracks -->
+              <div class="d-none d-md-flex justify-content-between border-bottom">
+                <div class="d-flex col-md-1 justify-content-center">#</div>
+                <div class="d-flex col-md-5">TITOLO</div>
+                <div class="d-flex col-md-2 justify-content-end">RISPRODUZIONI</div>
+                <div class="d-flex col-md-2 pe-4 justify-content-end">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock"
+                    viewBox="0 0 16 16">
+                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z" />
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0" />
+                  </svg>
+                </div>
+              </div>
+
+              <!-- TRACK 1 -->
+              <div class="track-item d-flex flex-row gap-3 align-items-center justify-content-between">
+                <!-- track number -->
+                <div id="track-number" class="d-none d-md-flex col-md-1 justify-content-center">${index + 1}</div>
+
+                <!-- track title + artist -->
+                <div id="title-artist" class="col-md-5">
+                  <div id="track-title">${data.title}</div>
+                  <div id="track-artist" class="text-secondary">${data.artist.name}</div>
+                </div>
+
+                <!-- other info -->
+                <div class="d-flex align-items-center d-md-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                    <path
+                      d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                  </svg>
+                </div>
+
+                <!-- rank -->
+                <div id="track-rank" class="d-none d-md-flex col-md-2 justify-content-end">${track.rank}</div>
+
+                <!-- duration -->
+                <div id="track-duration" class="d-none d-md-flex pe-4 col-md-2 justify-content-end">
+                  ${durataFormattata(track.duration)}s
+                </div>
+              </div>
+
+
+
+
+
+
+              <!-- ----------------------------DA ELIMINARE!!! ----------------------------------- -->
+              <!-- TRACK 2 -->
+              <div class="track-item d-flex flex-row gap-3 align-items-center justify-content-between">
+                <!-- track number -->
+                <div id="track-number" class="d-none d-md-flex col-md-1 justify-content-center">${index + 1}</div>
+
+                <!-- track title + artist -->
+                <div id="title-artist" class="col-md-5">
+                  <div id="track-title">Montanelli - Intro</div>
+                  <div id="track-artist" class="text-secondary">Pinguini Tattici Nucleari</div>
+                </div>
+
+                <!-- other info -->
+                <div class="d-flex align-items-center d-md-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                    <path
+                      d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                  </svg>
+                </div>
+
+                <!-- rank -->
+                <div id="track-rank" class="d-none d-md-flex col-md-2 justify-content-end">${track.rank}</div>
+
+                <!-- duration -->
+                <div id="track-duration" class="d-none d-md-flex pe-4 col-md-2 justify-content-end">16:25:65
+                </div>
+              </div>
+
+
+              <!-- TRACK 3 -->
+              <div class="track-item d-flex flex-row gap-3 align-items-center justify-content-between">
+                <!-- track number -->
+                <div id="track-number" class="d-none d-md-flex col-md-1 justify-content-center">${index + 1}</div>
+
+                <!-- track title + artist -->
+                <div id="title-artist" class="col-md-5">
+                  <div id="track-title">Montanelli - Intro</div>
+                  <div id="track-artist" class="text-secondary">Pinguini Tattici Nucleari</div>
+                </div>
+
+                <!-- other info -->
+                <div class="d-flex align-items-center d-md-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                    <path
+                      d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                  </svg>
+                </div>
+
+                <!-- rank -->
+                <div id="track-rank" class="d-none d-md-flex col-md-2 justify-content-end">${track.rank}</div>
+
+                <!-- duration -->
+                <div id="track-duration" class="d-none d-md-flex pe-4 col-md-2 justify-content-end">16:25:65
+                </div>
+              </div>
+
+
+              <!-- TRACK 4 -->
+              <div class="track-item d-flex flex-row gap-3 align-items-center justify-content-between">
+                <!-- track number -->
+                <div id="track-number" class="d-none d-md-flex col-md-1 justify-content-center">4</div>
+
+                <!-- track title + artist -->
+                <div id="title-artist" class="col-md-5">
+                  <div id="track-title">Montanelli - Intro</div>
+                  <div id="track-artist" class="text-secondary">Pinguini Tattici Nucleari</div>
+                </div>
+
+                <!-- other info -->
+                <div class="d-flex align-items-center d-md-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                    <path
+                      d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                  </svg>
+                </div>
+
+                <!-- rank -->
+                <div id="track-rank" class="d-none d-md-flex col-md-2 justify-content-end">${track.rank}</div>
+
+                <!-- duration -->
+                <div id="track-duration" class="d-none d-md-flex col-md-2 pe-4 ms-xl-2 justify-content-end">16:25:65
+                </div>
+              </div>
+            </div>
+            <!-- ----------------------------DA ELIMINARE (fino a qui)!!! ----------------------------------- -->
+
+
+
+
           </div>
-
-          <!-- simboli + play da medium -->
-          <div class="d-flex justify-content-between align-items-center mt-4 d-none d-md-flex">
-            <div id="simboli" class="d-flex gap-3 align-items-center">
-              <!-- play -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="green"
-                class="bi bi-play-circle-fill bg-white rounded-circle me-3" viewBox="0 0 16 16">
-                <path
-                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
-              </svg>
-              <!-- heart -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart"
-                viewBox="0 0 16 16">
-                <path
-                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-              </svg>
-              <!-- download -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                  d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
-              </svg>
-              <!-- other info -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                class="bi bi-three-dots" viewBox="0 0 16 16">
-                <path
-                  d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
-              </svg>
-            </div>
-          </div>
-
-
-          <!-- Tracks-list -->
-          <div id="tracks-list" class="d-flex flex-column mt-3 gap-4">
-
-            <!-- intestazione tracks -->
-            <div class="d-none d-md-flex border-bottom pb-md-2">
-              <div class="col-md-1 ms-md-3">#</div>
-              <div class="col-md-6">TITOLO</div>
-              <div class="col-md-3">RISPRODUZIONI</div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-clock col-md-2 ms-md-5" viewBox="0 0 16 16">
-                <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z" />
-                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0" />
-              </svg>
-            </div>
-
-            <div class="track-item d-flex flex-row gap-3 align-items-center justify-content-between">
-              <!-- track number -->
-              <div id="track-number" class="d-none d-md-flex col-md-1 ms-md-3">${index + 1}</div>
-
-              <!-- track title + artist -->
-              <div id="title-artist" class="col-md-6">
-                <div id="track-title">Montanelli - Intro</div>
-                <div id="track-artist" class="text-secondary">Pinguini Tattici Nucleari</div>
-              </div>
-
-              <!-- other info -->
-              <div class="d-flex align-items-center d-md-none">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                  <path
-                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
-                </svg>
-              </div>
-
-              <!-- rank -->
-              <div id="track-rank" class="d-none d-md-flex col-md-3">${track.rank}</div>
-
-              <!-- duration -->
-              <div id="track-duration" class="d-none d-md-flex col-md-2 ms-md-5">${durataFormattata(track.duration)}s</div>
-            </div>
-
-
-
-
-
-
-
-
-            <div class="track-item d-flex flex-row gap-3 align-items-center justify-content-between">
-              <!-- track number -->
-              <div id="track-number" class="d-none d-md-flex col-md-1 ms-md-3">${index + 1}</div>
-
-              <!-- track title + artist -->
-              <div id="title-artist" class="col-md-6">
-                <div id="track-title">Montanelli - Intro</div>
-                <div id="track-artist" class="text-secondary">Pinguini Tattici Nucleari</div>
-              </div>
-
-              <!-- other info -->
-              <div class="d-flex align-items-center d-md-none">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                  <path
-                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
-                </svg>
-              </div>
-
-              <!-- rank -->
-              <div id="track-rank" class="d-none d-md-flex col-md-3">${track.rank}</div>
-
-              <!-- duration -->
-              <div id="track-duration" class="d-none d-md-flex col-md-2 ms-md-5">${durataFormattata(track.duration)}s</div>
-            </div>
-
-
-
-
-
-
-
-
-            <div class="track-item d-flex flex-row gap-3 align-items-center justify-content-between">
-              <!-- track number -->
-              <div id="track-number" class="d-none d-md-flex col-md-1 ms-md-3">${index + 1}</div>
-
-              <!-- track title + artist -->
-              <div id="title-artist" class="col-md-6">
-                <div id="track-title">Montanelli - Intro</div>
-                <div id="track-artist" class="text-secondary">Pinguini Tattici Nucleari</div>
-              </div>
-
-              <!-- other info -->
-              <div class="d-flex align-items-center d-md-none">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                  <path
-                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
-                </svg>
-              </div>
-
-              <!-- rank -->
-              <div id="track-rank" class="d-none d-md-flex col-md-3">${track.rank}</div>
-
-              <!-- duration -->
-              <div id="track-duration" class="d-none d-md-flex col-md-2 ms-md-5">${durataFormattata(track.duration)}s</div>
-            </div>
-
-
-
-
-
-
-            <div class="track-item d-flex flex-row gap-3 align-items-center justify-content-between">
-              <!-- track number -->
-              <div id="track-number" class="d-none d-md-flex col-md-1 ms-md-3">${index + 1}</div>
-
-              <!-- track title + artist -->
-              <div id="title-artist" class="col-md-6">
-                <div id="track-title">Montanelli - Intro</div>
-                <div id="track-artist" class="text-secondary">Pinguini Tattici Nucleari</div>
-              </div>
-
-              <!-- other info -->
-              <div class="d-flex align-items-center d-md-none">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
-                  <path
-                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
-                </svg>
-              </div>
-
-              <!-- rank -->
-              <div id="track-rank" class="d-none d-md-flex col-md-3">${track.rank}</div>
-
-              <!-- duration -->
-              <div id="track-duration" class="d-none d-md-flex col-md-2 ms-md-5">${durataFormattata(track.duration)}s</div>
-            </div>
-          </div>
-
         </div>
       </div>
-    </div>
-  </main>
+    </main>
+    <!-- ------------------------------------------------ RIGHT SIDE ------------------------------------------------ -->
+
+    <div class="d-none d-xl-flex col-lg-3 col-xxl-2 flex-column banner-right px-3" id="rightSidebar">
+
+      <div class="firstSide mt-3">
+        <h6>Attivitá amici</h6>
+        <div class="d-flex justify-content-between">
+          <i class="bi bi-person-check align-item-center px-3"></i>
+          <i class="bi bi-x"></i>
+        </div>
+      </div>
 
 
+      <div class="secondSide mt-5 d-flex flex-column">
+        <div class="friendZone d-flex justify-content-between">
+          <div>
+            <img src="assets/Little-Boy-Surfing.jpg" alt="Alessio" class="imgProfilo" />
+          </div>
+          <div class="d-flex flex-column justify-content-start">
+            <h5>Alessio Cardone</h5>
+            <small>I will survive <i class="bi bi-dot"></i> Gloria Gaynor</small>
+          </div>
+          <div class="d-flex justify-content-end">
+            <p>4 ore</p>
+          </div>
+        </div>
 
-  <footer class="bg-black d-md-none">
+        <div class="friendZone d-flex justify-content-between">
+          <div>
+            <img src="assets/640x360.jpg" alt="Alessio" class="imgProfilo" />
+          </div>
+          <div class="d-flex flex-column justify-content-start">
+            <h5>Daniele De Leon</h5>
+            <small>Eyes of the tiger<i class="bi bi-dot"></i>Survivor</small>
+          </div>
+          <div class="d-flex justify-content-end">
+            <p>8 ore</p>
+          </div>
+        </div>
 
-    <div id="current-track" class="d-flex justify-content-end align-items-center bg-dark gap-3 pe-3 py-2 rounded"
-      style="--bs-bg-opacity: .5;">
+
+        <div class="friendZone d-flex justify-content-between">
+          <div>
+            <img src="assets/images.webp" alt="Alessio" class="imgProfilo" />
+          </div>
+          <div class="d-flex flex-column justify-content-start">
+            <h5>Tommaso Muraca</h5>
+            <small>Luci a San Siro<i class="bi bi-dot"></i>R. Vecchioni</small>
+          </div>
+          <div class="d-flex justify-content-end">
+            <p>4 ore</p>
+          </div>
+        </div>
+
+      </div><!--chiusura second section-->
+    </div> <!--chiusura colonna-->
+
+  </div>
+
+  <!-- ------------------------------------------------ FOOTER ------------------------------------------------ -->
+  <footer class="bg-black d-lg-none">
+
+    <div id="current-track" class="d-flex justify-content-end align-items-center bg-dark gap-3 pe-3 py-2 rounded">
       <div>Montanelli - Intro</div>
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-music-player"
         viewBox="0 0 16 16">
