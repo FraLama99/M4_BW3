@@ -16,6 +16,7 @@ const searchDeezer = (searchQuery) => {
             console.error('Error fetching data:', error);
         });
 };
+let tracce = [];
 
 const popolaAlbum = (data) => {
     const album = document.getElementById('album');
@@ -69,46 +70,48 @@ const popolaAlbum = (data) => {
     `;
     console.log(data);
     const tracks = document.getElementById('tracks');
-    tracks.innerHTML = `<div class="tracks-list ">                    
-                        ${data.tracks.data.map((track, index) => `
-                    <div
-                  class="track-item d-flex flex-row gap-3 align-items-center justify-content-between">                  
-                  <div id="track-number"
-                    class="d-none d-md-flex col-md-1 justify-content-center">
-                    ${index + 1}
-                  </div>                 
-                  <div id="title-artist" class="col-md-5">
-                    <div id="track-title">${track.title}</div>
-                    <div id="track-artist" class="text-secondary">
-                      ${track.artist.name}
-                    </div>
-                  </div>                 
-                  <div class="d-flex align-items-center d-md-none">
-                    <i
-                      class="bi bi-three-dots-vertical"
-                      width="16"
-                      height="16"
-                    ></i>
-                  </div>                 
-                  <div
-                    id="track-rank"
-                    class="d-none d-md-flex col-md-2 justify-content-end"
-                  >
-                    ${track.rank}
-                  </div>                 
-                  <div
-                    id="track-duration"
-                    class="d-none d-md-flex pe-4 col-md-2 justify-content-end"
-                  >
-                    ${durataFormattata(track.duration)}s
-                  </div>
-                </div>
-              </div>
-                    `).join('')}
-                </div>
-            
-        </div>`;
+    tracks.innerHTML = `<div  class="tracks-list ">                    
+                            ${data.tracks.data.map((track, index) => `
+                            <div class="track-item d-flex flex-row gap-3 align-items-center justify-content-between">                  
+                                <div id="track-number" 
+                                class="d-none d-md-flex col-md-1 justify-content-center">
+                                        ${index + 1}
+                                </div>                 
+                                <div id="title-artist" class="col-md-5">
+                                    <div id="track-title">${track.title}</div>
+                                        <div id="track-artist" class="text-secondary">
+                                        ${track.artist.name}
+                                        </div>
+                                    </div>                 
+                                    <div class="d-flex align-items-center d-md-none">
+                                        <i
+                                        class="bi bi-three-dots-vertical"
+                                        width="16"
+                                        height="16"
+                                        ></i>
+                                    </div>                 
+                                    <div
+                                        id="track-rank"
+                                        class="d-none d-md-flex col-md-2 justify-content-end"
+                                    >
+                                        ${track.rank}
+                                    </div>                 
+                                    <div
+                                        id="track-duration"
+                                        class="d-none d-md-flex pe-4 col-md-2 justify-content-end"
+                                    >
+                                        ${durataFormattata(track.duration)}s
+                                    </div>
+                                </div>
+                            </div>
+                                `).join('')}
+                        </div>`;
+    tracce = data.tracks.data;
+    caricaCanzone();
+    console.log(tracce);
+    return tracce;
 };
+
 function durataFormattata(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
@@ -128,4 +131,29 @@ if (searchButton) {
 } else {
     console.error('Search button not found');
 }
-searchDeezer('75621062'); 
+searchDeezer('1121401');
+/* 1121401 */
+/* 216487 */
+/* 161962 */
+/* 75621062 */
+
+const caricaCanzone = () => {
+    const tracks = document.querySelectorAll('.track-item');
+    tracks.forEach((track, index) => {
+        track.addEventListener('click', () => {
+            const player = document.getElementById('player');
+            if (player) {
+                player.innerHTML = `
+                    <div class="now-playing d-flex align-items-center gap-3">
+                        <img src="${tracce[index].album.cover_small}" alt="${tracce[index].title}" />
+                        <div>
+                            <div class="track-title fw-light">${tracce[index].title}</div>
+                            <div class="track-artist fw-light">${tracce[index].artist.name}</div>
+                        </div>
+                    </div>
+                `;
+            }
+            console.log('Playing:', tracce[index].title);
+        });
+    });
+};
