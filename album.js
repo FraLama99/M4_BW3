@@ -1,21 +1,40 @@
 const URL = "https://striveschool-api.herokuapp.com/api/deezer/album/";
 
 const searchDeezer = (searchQuery) => {
+    const spinner = document.getElementById('loadingSpinner');
+    if (spinner) spinner.style.display = 'block';
+
     fetch(`${URL}${searchQuery}`)
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+            if (!response.ok) throw new Error('Network response was not ok');
             return response.json();
         })
         .then(data => {
-            console.log(data);
             popolaAlbum(data);
+            if (spinner) spinner.style.display = 'none';
         })
         .catch(error => {
-            console.error('Error fetching data:', error);
+            console.error('Error:', error);
+            if (spinner) spinner.style.display = 'none';
         });
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const spinner = document.createElement('div');
+    spinner.innerHTML = `
+        <div id="loadingSpinner" class="position-fixed top-0 start-0 m-3">
+            <div class="spinner-border text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>`;
+    document.body.appendChild(spinner);
+
+
+    const albums = [1121401, 216487, 161962, 75621062, 1121182, 662259, 382624];
+    const randomAlbum = albums[Math.floor(Math.random() * albums.length)];
+    searchDeezer(randomAlbum);
+});
 let tracce = [];
 
 const popolaAlbum = (data) => {
@@ -119,24 +138,7 @@ function durataFormattata(seconds) {
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
 
-/* const searchButton = document.getElementById('ricerca');
-if (searchButton) {
-    searchButton.addEventListener('click', () => {
-        const searchInput = document.getElementById('search');
-        if (searchInput && searchInput.value) {
-            searchDeezer(searchInput.value);
-        } else {
-            console.error('Search input not found or empty');
-        }
-    });
-} else {
-    console.error('Search button not found');
-} */
-searchDeezer('1121401');
-/* 1121401 */
-/* 216487 */
-/* 161962 */
-/* 75621062 */
+
 
 const caricaCanzone = () => {
     const tracks = document.querySelectorAll('.track-item');
