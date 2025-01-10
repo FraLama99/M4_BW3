@@ -1,4 +1,8 @@
 @media screen and (max-width: 991px) {
+    body {
+      background-color: black;
+    }
+
     #cover, #cover img {
         width: 200px;
         height: 200px;
@@ -31,6 +35,9 @@
 
 
 @media screen and (min-width: 992px) {
+  body {
+    background-color: rgb(33, 37, 41) ;
+  }
     #cover, #cover img {
         width: 300px;
         height: 300px;
