@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const spinner = document.createElement('div');
     spinner.innerHTML = `
-        <div id="loadingSpinner" class="position-fixed top-0 start-0 m-3">
+        <div id="loadingSpinner" class="position-fixed" style="top: 50%; left: 50%; transform: translate(-50%, -50%)">
             <div class="spinner-border text-light" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(spinner);
 
 
-    const albums = [1121401, 216487, 161962, 75621062, 1121182, 662259, 382624];
+    const albums = [1121401, 216487, 161962, 75621062, 1121182, 662259, 382624, 432585447, 312093037, 170197682, 15444116, 676779641, 323139547, 73323];
     const randomAlbum = albums[Math.floor(Math.random() * albums.length)];
     searchDeezer(randomAlbum);
 });
