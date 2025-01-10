@@ -1,6 +1,8 @@
 @media screen and (max-width: 991px) {
     body {
-      background-color: black;
+      background: linear-gradient(rgb(184, 165, 1), rgb(53, 52, 52), black);
+      background-attachment: fixed;
+      background-size: cover;
     }
 
     #cover, #cover img {
@@ -36,7 +38,9 @@
 
 @media screen and (min-width: 992px) {
   body {
-    background-color: rgb(33, 37, 41) ;
+    background: linear-gradient(rgb(184, 165, 1), rgb(53, 52, 52), black);
+    background-attachment: fixed;
+    background-size: cover;
   }
     #cover, #cover img {
         width: 300px;

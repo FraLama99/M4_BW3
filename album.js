@@ -55,13 +55,13 @@ const popolaAlbum = (data) => {
                       />
                       <h4 class="m-0">${data.artist.name}</h4>
                     </div>
-                    <div class="d-flex gap-1 text-secondary mt-2">
+                    <div class="d-flex gap-1 mt-2">
                       <div class="d-lg-none">Album</div>
                       <div>•</div>
                       <div class="tracks-date">${data.release_date}</div>
                       <div class="d-none d-lg-flex">•</div>
                       <div class="d-none d-lg-flex tracks-count">
-                        ${data.nb_tracks}
+                        ${data.nb_tracks} brani
                       </div>
                     </div>
                   </div>
